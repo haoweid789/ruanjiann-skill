@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "src/frontend/**", "use": "@vercel/static-build" },
+    { "src": "src/backend/**", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "src/backend/$1" },
+    { "src": "/(.*)", "dest": "src/frontend/$1" }
+  ],
+  "env": {
+    "CLICKHOUSE_HOST": "@clickhouse_host",
+    "API_SECRET": "@api_secret"
+  }
+}

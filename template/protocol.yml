@@ -1,0 +1,79 @@
+# 门禁协议 (protocol.yml) — snodo 风格
+# 声明流程模式、验证器与策略，变更须通过验证签名后才能进入下一阶段。
+
+skill: ruanjiann-skill
+version: "3.0"
+
+hitlModes: [free, approval, auto]
+subAgents: [explore, implement, test, review, plan]
+slashCommands: ["/spec", "/plan", "/build", "/test", "/review", "/ship", "/webperf", "/code-simplify"]
+
+modes:
+  - id: plan
+    name: 计划
+    tools: [read, grep, glob, write]
+    description: 基于 docs/architecture.md 与 tasks/backlog.md 输出实施计划，人类批准后进入下一步
+  - id: implement
+    name: 实现
+    tools: [write, edit, bash]
+    description: 生成代码，通过 lint / 格式化检查
+  - id: review
+    name: 评审
+    tools: [read, diff]
+    description: 对 diff 提交结构化裁定（typed issues），人类可查看 inline 评论
+  - id: security
+    name: 安全
+    tools: [bash, read]
+    description: 运行 security-review 清单与依赖扫描，critical 发现直接阻断
+  - id: test
+    name: 测试
+    tools: [bash]
+    description: 运行单元 + 集成 + 契约测试，CI 全绿
+  - id: judge
+    name: 裁定
+    tools: [read]
+    description: 基于真实测试运行结果裁定任务是否完成，不凭口头承诺
+  - id: fix
+    name: 修复
+    tools: [edit, write, bash]
+    description: 任一阶段失败时路由至此，附带精确问题描述，修复后重跑后续门禁
+
+validators:
+  - id: lint
+    name: 代码检查
+    command: "npm run lint && <backend-lint-cmd>"
+    enforceable: true
+  - id: typecheck
+    name: 类型检查
+    command: "tsc --noEmit"
+    enforceable: true
+  - id: unit-test
+    name: 单元测试
+    command: "npm test"
+    enforceable: true
+  - id: security-scan
+    name: 安全扫描
+    command: "<dependency-scan-cmd>"
+    enforceable: true
+    blockOn: critical
+  - id: clickhouse-query
+    name: ClickHouse 验证
+    command: "<clickhouse-query-cmd>"
+    enforceable: true
+
+policy:
+  onConflict: "human-decides"          # 验证器不一致时，由人类裁定
+  blocker: "non-overridable"           # 单一阻塞项可中止执行，不可被投票推翻
+  auditLog: "audit.md"                 # hash-chained 审计日志
+  worktreeIsolation: true              # 每个任务在独立 git worktree 分支运行
+  humanInLoop: true                    # 每步 diff 需人类审阅（可开启 auto-approve）
+  hitlMode: "approval"                 # 默认审批模式：free / approval / auto
+
+flow:
+  - plan -> implement
+  - implement -> review
+  - review -> security
+  - security -> test
+  - test -> judge
+  - any -> fix (on failure)
+  - fix -> implement (retry)

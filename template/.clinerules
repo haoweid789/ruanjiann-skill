@@ -1,0 +1,52 @@
+# Cline 项目规则 (.clinerules)
+
+Cline 在本项目中的行为规范，涵盖 coding standards、架构约束、部署流程、测试要求、子代理角色、三态 HITL 审批与 slash 命令。
+
+## 编码标准
+- TypeScript 严格模式，禁止 `any`（除非有合理注释）
+- 命名遵循项目约定，见 `AGENT.md`
+- 每次编辑前运行 lint，编辑后运行类型检查与测试
+
+## 架构约束
+- 六边形架构：表现层 → 应用层 → 领域层 → 基础设施层
+- 数据访问通过 Repository 接口，禁止在 Handler 中直接写 SQL
+- API 契约以 `docs/api-contract.yaml` 为准
+
+## 安全
+- 无硬编码密钥，全部使用环境变量
+- SQL 参数化查询，禁止字符串拼接
+- 文件上传：后缀允许列表 + 重命名 + 非执行目录 + MIME 校验
+- 敏感字不落日志
+
+## 测试
+- TDD 红绿重构，优先生成测试
+- 每个 bolt 必须有对应测试，CI 全绿才能合并
+- 单元测试 > 集成测试 > 契约测试
+
+## 门禁
+- plan → implement → review → security → test → judge
+- 任一阶段失败，路由到 fixer，修复后重跑后续门禁
+
+## human-in-the-loop
+- Plan 模式：探索代码库、提问澄清、制定策略，人类对齐后进入 Act
+- Act 模式：每次编辑以 diff 呈现，人类可审阅、修改、回滚
+- 所有变更通过 checkpoints 记录，可轻松撤销
+
+## 子代理角色（loopra 风格）
+| 角色 | 职责 | 权限 |
+|---|---|---|
+| explore | 项目探索与调研 | 只读 |
+| implement | 功能实现 | 可写入 |
+| test | 测试编写与执行 | 可写入 |
+| review | 代码审查 | 只读 |
+| plan | 计划制定 | 只读 |
+
+## 三态 HITL 审批
+| 模式 | 行为 |
+|---|---|
+| free | 跳过工具审批及项目边界检查，工具参数校验仍生效 |
+| approval | 只读工具和普通项目内操作自动放行，其余转人工审批 |
+| auto | 先应用 approval 规则，再由校验模型审核剩余调用，失败则转人工 |
+
+## Slash 命令
+`/spec` `/plan` `/build` `/test` `/review` `/ship` `/webperf` `/code-simplify`，每个命令产出可验证 artifact。

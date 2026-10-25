@@ -1,0 +1,35 @@
+# CI 流水线模板（安全回归 + 测试）
+name: ruanjiann-skill-ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装依赖
+        run: |
+          cd src/backend && <install-command>
+          cd ../frontend && npm ci
+      - name: 运行 TDD 测试
+        run: |
+          cd src/backend && <test-command>
+          cd ../frontend && npm test
+      - name: 安全回归扫描
+        run: |
+          <security-scan-command>
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 前端构建
+        run: |
+          cd src/frontend && npm run build
+      - name: 部署预览
+        uses: vercel/action@v20

@@ -1,0 +1,4 @@
+# 统一换行符：仓库内一律 LF，仅 PowerShell 脚本检出为 CRLF
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf

@@ -1,0 +1,46 @@
+{
+  "skill": {
+    "name": "ruanjiann-skill",
+    "displayName": "软件工程专项技能",
+    "version": "3.0",
+    "description": "整合 13 个领域 + GitHub/Gitee cline/agent-md/snodo/ai-sdlc/loopra/agent-skills 等 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件",
+    "file": "ruanjiann-skill.md",
+    "metadata": {
+      "type": "user",
+      "nodeType": "memory"
+    }
+  },
+  "domains": [
+    "backend",
+    "clickhouse",
+    "frontend-design",
+    "frontend-patterns",
+    "ui-ux",
+    "vercel-react",
+    "coding-standards",
+    "security-review",
+    "tdd",
+    "architecture-planning",
+    "notebooklm",
+    "obsidian",
+    "superpowers"
+  ],
+  "sdlcPhases": ["Inception", "Construction", "Operations"],
+  "stages": ["S1-planning", "S2-backend", "S3-clickhouse", "S4-frontend", "S5-testing"],
+  "gates": ["plan", "implement", "review", "security", "test", "judge"],
+  "agents": ["Architect", "Visionary", "Reviewer", "Implementer", "Maintainer"],
+  "subAgents": ["explore", "implement", "test", "review", "plan"],
+  "expertRoles": ["code-reviewer", "test-engineer", "security-auditor", "web-performance-auditor"],
+  "slashCommands": ["/spec", "/plan", "/build", "/test", "/review", "/ship", "/webperf", "/code-simplify"],
+  "hitlModes": ["free", "approval", "auto"],
+  "adaptiveDepth": ["Minimal", "Standard", "Comprehensive"],
+  "memoryFiles": ["agents.md", "plan.md", "progress.md", "verify.md", "gotchas.md"],
+  "ruleFiles": ["AGENT.md", "CLAUDE.md", ".clinerules"],
+  "protocol": "protocol.yml",
+  "auditLog": "audit.md",
+  "sessionFormat": "JSONL",
+  "externalSources": {
+    "github": ["cline/cline", "iamfakeguru/agent-md", "snodo-dev/snodo", "wico216/ai-sdlc", "aiagentflow/aiagentflow", "PxA-Labs/AutoMaintainer", "dontriskit/awesome-ai-software-engineering"],
+    "gitee": ["ezdemo/loopra", "jxkjzx/agent-skills"]
+  }
+}
