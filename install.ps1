@@ -1,4 +1,4 @@
-# ruanjiann-skill v3.0 安装脚本（PowerShell / Windows）
+# ruanjiann-skill v4.0 安装脚本（PowerShell / Windows）
 # 作用：将 ruanjiann-skill.md 注册到 ZCode 记忆目录，并更新 MEMORY.md 索引
 
 $ErrorActionPreference = "Stop"
@@ -9,7 +9,7 @@ $MemoryDir = "C:\Users\qw123\.zcode\cli\memories\projects\1111-ee346761cdb384c0\
 $MemoryMd = Join-Path $MemoryDir "MEMORY.md"
 $SkillDst = Join-Path $MemoryDir "ruanjiann-skill.md"
 
-Write-Host "[ruanjiann-skill v3.0] 开始安装..." -ForegroundColor Cyan
+Write-Host "[ruanjiann-skill v4.0] 开始安装..." -ForegroundColor Cyan
 
 # 1. 检查核心文件
 if (-not (Test-Path $SkillSrc)) {
@@ -31,7 +31,7 @@ if ((Get-Content $MemoryMd -Raw) -match 'ruanjiann-skill\.md') {
   Write-Host "[INFO] MEMORY.md 已包含 ruanjiann-skill 索引，跳过追加" -ForegroundColor Yellow
 } else {
   Add-Content $MemoryMd ""
-  Add-Content $MemoryMd "- [软件工程专项技能 (ruanjiann-skill v3.0)](ruanjiann-skill.md) — 整合 13 个领域 + GitHub/Gitee cline/agent-md/snodo/ai-sdlc/loopra/agent-skills 等 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件"
+  Add-Content $MemoryMd "- [软件工程专项技能 (ruanjiann-skill v4.0)](ruanjiann-skill.md) — 整合 13 个领域 + GitHub/Gitee cline/agent-md/snodo/ai-sdlc/loopra/agent-skills/spec-kit 等 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件"
   Write-Host "[OK] MEMORY.md 索引已追加" -ForegroundColor Green
 }
 
@@ -41,4 +41,4 @@ Write-Host "[提示] 若要在新项目中使用，请将 template/ 下的内容
 Write-Host "  cp -r $ScriptDir/template/* /path/to/your-project/" -ForegroundColor Cyan
 Write-Host ""
 
-Write-Host "[ruanjiann-skill v3.0] 安装完成。下次 ZCode 会话将自动加载该技能。" -ForegroundColor Cyan
+Write-Host "[ruanjiann-skill v4.0] 安装完成。下次 ZCode 会话将自动加载该技能。" -ForegroundColor Cyan

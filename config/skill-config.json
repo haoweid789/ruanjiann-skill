@@ -2,8 +2,8 @@
   "skill": {
     "name": "ruanjiann-skill",
     "displayName": "软件工程专项技能",
-    "version": "3.0",
-    "description": "整合 13 个领域 + GitHub/Gitee cline/agent-md/snodo/ai-sdlc/loopra/agent-skills 等 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件",
+    "version": "4.0",
+    "description": "整合 13 个领域 + GitHub/Gitee cline/agent-md/snodo/ai-sdlc/loopra/agent-skills/spec-kit 等 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件",
     "file": "ruanjiann-skill.md",
     "metadata": {
       "type": "user",
@@ -36,11 +36,16 @@
   "adaptiveDepth": ["Minimal", "Standard", "Comprehensive"],
   "memoryFiles": ["agents.md", "plan.md", "progress.md", "verify.md", "gotchas.md"],
   "ruleFiles": ["AGENT.md", "CLAUDE.md", ".clinerules"],
+  "constitution": "constitution.md",
+  "specDirs": ["specs/", "openspec/specs/", "openspec/changes/"],
+  "evalTypes": ["capability", "regression"],
+  "evalMetrics": ["pass@k", "pass^k"],
   "protocol": "protocol.yml",
   "auditLog": "audit.md",
   "sessionFormat": "JSONL",
   "externalSources": {
-    "github": ["cline/cline", "iamfakeguru/agent-md", "snodo-dev/snodo", "wico216/ai-sdlc", "aiagentflow/aiagentflow", "PxA-Labs/AutoMaintainer", "dontriskit/awesome-ai-software-engineering"],
-    "gitee": ["ezdemo/loopra", "jxkjzx/agent-skills"]
+    "github": ["cline/cline", "iamfakeguru/agent-md", "snodo-dev/snodo", "wico216/ai-sdlc", "aiagentflow/aiagentflow", "PxA-Labs/AutoMaintainer", "dontriskit/awesome-ai-software-engineering", "github/spec-kit", "Fission-AI/OpenSpec", "bmad-code-org/BMAD-METHOD", "OthmanAdi/planning-with-files", "parcadei/Continuous-Claude-v3", "agentsmd/agents.md"],
+    "gitee": ["ezdemo/loopra", "jxkjzx/agent-skills"],
+    "papers": ["arxiv 2605.15245", "arxiv 2606.20683", "arxiv 2605.18747", "Chroma Context Rot 2025-07"]
   }
 }

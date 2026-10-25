@@ -1,19 +1,19 @@
 ---
 name: ruanjiann-skill
-description: 软件工程专项技能（ruanjiann-skill v3.0）—— 整合 13 个领域 + GitHub/Gitee 顶尖 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件
+description: 软件工程专项技能（ruanjiann-skill v4.0）—— 整合 13 个领域 + GitHub/Gitee 顶尖 SDLC 实践，端到端交付可运行、可测试、可维护、可审计的软件
 metadata:
   node_type: memory
   type: user
-  version: "3.0"
+  version: "4.0"
 ---
 
-# 软件工程专项技能（ruanjiann-skill v3.0）
+# 软件工程专项技能（ruanjiann-skill v4.0）
 
-**一句话定位**：以助手为首要生产力，从意图捕获到生产运营，端到端交付可运行、可测试、可维护、可审计的软件。13 个输入领域全部并入，外加 GitHub/Gitee 上 cline / agent-md / snodo / ai-sdlc / loopra / agent-skills 等顶尖 SDLC 产品的门禁、记忆、协议、规则与子代理实践。
+**一句话定位**：以助手为首要生产力，从意图捕获到生产运营，端到端交付可运行、可测试、可维护、可审计的软件。13 个输入领域全部并入，外加 GitHub/Gitee 上 cline / agent-md / snodo / ai-sdlc / loopra / agent-skills / spec-kit 等顶尖 SDLC 产品的门禁、记忆、协议、规则与子代理实践。
 
-**Why**：v2 已整合 backend/clickhouse/前端/ui-ux/vercel-react/编码规范/安全审查/TDD/架构/NotebookLM/Obsidian/Superpowers 等 13 个领域，并并入 GitHub 的门禁、记忆、协议与三阶段 SDLC。v3 进一步吸收 Gitee 上 loopra / agent-skills 的精华——子代理角色体系、三态 HITL 审批、slash 命令系统、六阶段技能组织、反合理化验证表、JSONL 会话持久化与 Token 统计、插件化工具热插拔——让交付的软件更贴近工业级标准。
+**Why**：v2 已整合 backend/clickhouse/前端/ui-ux/vercel-react/编码规范/安全审查/TDD/架构/NotebookLM/Obsidian/Superpowers 等 13 个领域，并并入 GitHub 的门禁、记忆、协议与三阶段 SDLC。v3 吸收 Gitee 上 loopra / agent-skills 的子代理、三态 HITL、slash 命令与 JSONL 会话。v4 再并入 2026 年验证过的三大工程实践——规范驱动开发（spec-kit / OpenSpec / BMAD-METHOD，把「做什么」变成结构化契约）、上下文工程（对抗 context rot，把上下文当有限注意力预算）、评测驱动（能力/回归双层评测 + pass@k/pass^k 指标，让非确定性产出可度量）——让交付过程从「能跑通」进化为「可证明、可回放、可回归」。
 
-**How to apply**：每新建一个软件构建任务，先按 §I–§II 分阶段派发，再套用 §十二 门禁协议（protocol.yml）与 §十一 持久化记忆；每阶段必须产出可运行的验收物，门禁不通过不合并。
+**How to apply**：每新建一个软件构建任务，先按 §I–§II 分阶段派发，再套用 §十二 门禁协议（protocol.yml）与 §十一 持久化记忆；意图层用 §十八 规范驱动（SDD）落地，执行层遵守 §十九 上下文工程纪律，收尾层用 §二十 评测驱动证明质量；每阶段必须产出可运行的验收物，门禁不通过不合并。
 
 ---
 
@@ -184,6 +184,7 @@ plan → implement → review → security → test → judge
 ```
 software-project/
 ├── AGENT.md              # 项目级规则（单一事实来源，供代理阅读）
+├── constitution.md       # SDD 项目不变量（spec-kit 风格，一次性建立）
 ├── CLAUDE.md             # Claude Code 入口（@AGENT.md）
 ├── .clinerules           # Cline 项目规则（coding standards / architecture / deployment）
 ├── protocol.yml          # 门禁协议（modes / validators / policy，snodo 风格）
@@ -231,7 +232,7 @@ software-project/
 
 借鉴 Cline 的 `.clinerules` 与 agent-md 的 `AGENT.md` 单一事实来源。每个项目必须包含：
 
-- `AGENT.md`：项目级规则总入口，供所有编码代理（Claude Code / Codex / Cursor / Windsurf / Cline）阅读。
+- `AGENT.md`：项目级规则总入口，供所有编码代理（Claude Code / Codex / Cursor / Windsurf / Cline）阅读。对应 agents.md 开放标准（6 万+ 仓库采用，Linux Foundation Agentic AI Foundation 托管）：monorepo 可嵌套、就近者优先、单文件 ≤32 KiB；Claude Code 侧用 `@AGENTS.md` 引用。
 - `CLAUDE.md`：Claude Code 专用入口，通过 `@AGENT.md` 引用。
 - `.clinerules`：Cline 专用，涵盖 coding standards、架构约束、部署流程、测试要求。
 - 规则分为两层：
@@ -284,7 +285,7 @@ software-project/
 
 ---
 
-## 十五、GitHub/Gitee 参考与外部实践（v3.0 已并入）
+## 十五、GitHub/Gitee 参考与外部实践（v4.0 已并入）
 
 | 来源 | 平台 | 核心价值 | 已并入章节 |
 |---|---|---|---|
@@ -295,7 +296,17 @@ software-project/
 | aiagentflow / AutoMaintainer | GitHub | plan→implement→review→security→test→judge 门禁；5-Agent 分工；自修复循环 | §七 门禁协议、§八 职责分离 |
 | dontriskit/awesome-ai-software-engineering | GitHub | 规范先于代码、活文档、CONTEXT.md、PRD 模板 | §三 Golden Thread、§十六 规范先行 |
 | ezdemo/loopra | Gitee | 五种子代理角色（explore/implement/test/review/plan）；三态 HITL（free/approval/auto）；JSONL 会话持久化、自动摘要、Token 统计；插件化工具热插拔 | §五 子代理角色、§七 三态 HITL、§九 记忆层增强 |
-| jxkjzx/agent-skills | Gitee | 八个 slash commands（/spec/plan/build/test/review/ship/webperf/code-simplify）；24 技能六阶段；四个专家角色；反合理化表 | §六 Slash 命令、§五 专家角色、§十四 反合理化验证 |
+| jxkjzx/agent-skills | Gitee | 八个 slash commands（/spec/plan/build/test/review/ship/webperf/code-simplify）；24 技能六阶段；四个专家角色；反合理化表 | §六 Slash 命令、§五 专家角色、§十七 反合理化验证 |
+| github/spec-kit | GitHub | SDD 六阶段（constitution/specify/plan/tasks/implement/converge）；模板+检查清单+跨 artifact 分析；38 代理集成 | §十八 规范驱动 |
+| Fission-AI/OpenSpec | GitHub | 轻量 SDD；specs/changes/delta（ADDED/MODIFIED/REMOVED）；棕地友好；25+ 工具 | §十八 规范驱动 |
+| bmad-code-org/BMAD-METHOD | GitHub | 角色 persona 链（Analyst/PM/Architect/PO/SM/Dev/QA）；自包含 story 文件；Quick/Full 双路径 | §十八 规范驱动、§五 子代理 |
+| OthmanAdi/planning-with-files | GitHub | 文件化计划三件套每轮回注；抗 /clear 与压缩；确定性完成门 | §十九 上下文工程、§十一 持久化记忆 |
+| parcadei/Continuous-Claude-v3 | GitHub | continuity ledger + handoff；premortem 风险预演；worktree 隔离执行 | §十一 持久化记忆、§七 HITL |
+| agentsmd/agents.md | GitHub | AGENTS.md 开放标准；嵌套就近读取；32 KiB 上限；Linux Foundation Agentic AI Foundation 托管 | §十 项目级规则、§十九 上下文工程 |
+| Chroma《Context Rot》（2025-07）+ arXiv 2606.20683 | 论文 | 性能随输入非均匀衰减；上下文=有限注意力预算；提示工程→上下文工程→脚手架工程 | §十九 上下文工程 |
+| arXiv 2605.18747（Code as Agent Harness / RLM） | 论文 | 代码即脚手架；Python 环境按需探查长输入，破上下文窗口限制 | §十九 上下文工程 |
+| arXiv 2605.15245（SDLC 系统性综述） | 论文 | 输出可验证性是落地首要使能因素；Planner-Executor-Reviewer 主导架构；行为限制在可验证有界空间 | §二十 评测驱动、§十二 门禁 |
+| Anthropic Engineering（2026-03） | 工程博客 | Planner-Generator-Evaluator；Playwright 实测运行中应用并按硬阈值打分；sprint contract 先协商；评分上下文与生成推理链隔离 | §二十 评测驱动 |
 
 ---
 
@@ -324,7 +335,89 @@ software-project/
 
 ---
 
-## 十八、验收质量门（v3.0，全部通过才算任务完成）
+## 十八、规范驱动开发（SDD，借鉴 spec-kit / OpenSpec / BMAD-METHOD）
+
+规范先于代码（§十六）的可执行化：把「要做什么」写成结构化契约，再派生计划与任务，代码只是规范的投影。
+
+### spec-kit 六阶段（github/spec-kit，14 万+ star）
+
+| 阶段 | 产物 | 门禁 |
+|---|---|---|
+| constitution | `constitution.md`（项目级不变量，一次性建立） | 人类批准 |
+| specify | `specs/<feature>/spec.md`（做什么、为什么、验收场景） | 质量检查清单通过 |
+| plan | 技术方案（选型、数据模型、契约） | 与 spec 无冲突 |
+| tasks | 有序任务清单（2–3 个/bolt） | 每个任务可独立验证 |
+| implement | 代码 + diff | lint / 类型检查 / 测试通过 |
+| converge | 一致性报告 | 逐轮收敛直至 Converged |
+
+每阶段产出 Markdown artifact 喂给下一阶段，代理拿到的是结构化上下文而非临时提示词；checklist 与跨 artifact 分析在写代码前抓住「计划漂移」。
+
+### OpenSpec 增量规范（Fission-AI/OpenSpec，7 万+ star）
+
+面向存量项目（brownfield）的轻量 SDD，用 delta 而非重写：
+
+- `openspec/specs/<capability>.md`：系统当前行为，唯一事实来源
+- `openspec/changes/<slug>/`：proposal（为什么/改什么）/ design / tasks / delta specs
+- delta 只描述 ADDED / MODIFIED / REMOVED；变更归档后合入 specs
+- 哲学：fluid not rigid、iterative not waterfall、为棕地项目而生
+
+### BMAD 故事文件（bmad-code-org/BMAD-METHOD，5 万+ star）
+
+规划产物切分为自包含 story 文件：每个 story 自带需求、架构约束、验收标准与前序上下文——「故事即提示词」，执行代理无需从长对话重新推导意图。角色链：Analyst → PM → Architect → PO/SM → Dev/QA；Quick Path（小改）与 Full Path（产品级）按规模自适应。
+
+### 落地到本技能
+
+Inception 的 `intent.md` / `requirements.md` / `units/` 即 spec 层；`constitution.md` 与 AGENT.md 并列为项目不变量；Bolts 对应 tasks 切分；UNIT COMPLETE 门禁即 converge。
+
+---
+
+## 十九、上下文工程（对抗 context rot）
+
+论文与工程证据：Chroma《Context Rot》（2025-07，18 个模型受测）——模型性能随输入增长**非均匀衰减**，NIAH 近满分不代表语义任务可靠，长窗口是容量规格而非性能保证。arXiv 2606.20683：工程范式从提示工程 → 上下文工程 → 脚手架（harness）工程，智能体表现是「模型–脚手架配对」的属性。arXiv 2605.18747：代码即脚手架，用可执行代码按需探查长输入（RLM 思路，MIT CSAIL 2025-10）。
+
+### 上下文预算规则
+
+- 把上下文当**有限注意力预算**，不是免费空间：宁可检索最小高信号集合，不向窗口倾倒长文
+- 重要材料放在注意力最佳位置；plausible-but-wrong 的干扰项不进上下文
+- 压缩/摘要有损——落盘优先：先写文件再摘要（planning-with-files 模式，2.8 万 star：taskplan / findings / progress 三文件每轮回注，抗 `/clear` 与压缩）
+- 分层就近读取：AGENTS.md 可嵌套，离被编辑文件最近者优先（agents.md 开放标准，6 万+ 仓库采用，Linux Foundation Agentic AI Foundation 托管，单文件 32 KiB 上限；Claude Code 用 `@AGENTS.md` 引用）
+- 长任务用代码环境按需探查（正则/分片/打印），而非全文入上下文
+
+---
+
+## 二十、评测驱动（Eval-Driven Development）
+
+TDD 管确定性代码，评测驱动管非确定性产出：**先写评测再写实现**，每次变更过同一套评测，「有没有变好」用数字回答。
+
+| 类型 | 回答的问题 | 说明 |
+|---|---|---|
+| 能力评测 capability | 能不能做到新事情 | 早期允许失败，多轮稳定后毕业 |
+| 回归评测 regression | 老本领是否还成立 | 冻结基线，每次变更必跑 |
+
+### 评分器优先级
+
+代码评分器（确定性断言：退出码、文件存在、模式匹配）> 模型评分器（LLM-as-judge，按评分量表打分，**定期用人工分数校准**）> 人工评分（高风险/高歧义）。先跑确定性层——便宜、快、无歧义。
+
+### 指标
+
+- **pass@k**：k 次尝试至少一次成功（能力评测，目标 pass@3 ≥ 0.90）
+- **pass^k**：k 次全部成功（发布关键路径，目标 pass^3 = 1.00，一次侥幸不算过）
+
+### 纪律
+
+- **毕业机制**：能力在多轮稳定后冻结为回归测试，防止静默劣化
+- 初始 10–20 个用例，从真实失败出发；生产每暴露一种新失败就增生一条
+- 小套件每次提交都跑，胜过大套件跑一次；评测代码与业务代码同仓库同评审标准
+- 验结局状态，不验代理自述（"grading the claim" 陷阱）；基础设施噪声会假装成失败，重跑再下结论
+- 保留永不通气的 held-out 任务，防应试
+
+### 为什么是资产
+
+模型月月升级，冻结的评测套件让「换不换模型」变成一条命令的重跑；提示词会过时，评测套件持续增值。Anthropic 2026-03 工程博客的 Planner-Generator-Evaluator 脚手架是同一思想的工程化：Evaluator 用 Playwright 实测运行中的应用并按硬阈值打分，sprint 前先协商 contract，且评分上下文与生成推理链隔离。
+
+---
+
+## 二十一、验收质量门（v4.0，全部通过才算任务完成）
 
 - [ ] AGENT.md / CLAUDE.md / .clinerules 存在，作为单一事实来源
 - [ ] intent.md / requirements.md / units/ 存在，Inception 门禁通过
@@ -345,10 +438,13 @@ software-project/
 - [ ] 部署方案可回滚，Operations 门禁 (PRODUCTION READY) 通过
 - [ ] 三态 HITL 审批模式已配置（free/approval/auto 之一）
 - [ ] 反合理化验证表全部填写并通过
+- [ ] constitution.md 存在并经人类批准（SDD 项目不变量）
+- [ ] specs/changes 规范结构与实现一致（或已记录不适用的理由）
+- [ ] 评测套件存在：能力评测通过、回归基线冻结、可随变更重放
 
 ---
 
-## 十九、与现有记忆关联
+## 二十二、与现有记忆关联
 
 - [[junshi-kb-design]] — KB 组装器/管理层/prompt v2 设计，可作为本技能的知识库基础设施
 - [[junshi-app-state]] — 「继续」App 状态与欠账，本技能生成的软件若涉及该 App 可复用其状态模型

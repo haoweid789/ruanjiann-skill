@@ -1,6 +1,6 @@
-# 快速开始示例（ruanjiann-skill v3.0）
+# 快速开始示例（ruanjiann-skill v4.0）
 
-本示例演示如何在一个新项目中启用 `ruanjiann-skill` v3.0，并派发第一个构建任务，走完 Inception → Construction → Operations 三阶段与门禁流程。
+本示例演示如何在一个新项目中启用 `ruanjiann-skill` v4.0，并派发第一个构建任务，走完 Inception → Construction → Operations 三阶段与门禁流程。
 
 ## 步骤 1：安装技能（一次性）
 
@@ -74,9 +74,9 @@ Human-in-the-loop：每次编辑以 diff 呈现，人类审阅后批准；checkp
 3. PRODUCTION READY 门禁通过，audit.md 记录。
 ```
 
-## 步骤 7：验收质量门（v3.0）
+## 步骤 7：验收质量门（v4.0）
 
-对照 `ruanjiann-skill.md` §十八 验收质量门，全部打勾后方可合并。关键项：
+对照 `ruanjiann-skill.md` §二十一 验收质量门，全部打勾后方可合并。关键项：
 - [ ] AGENT.md / CLAUDE.md / .clinerules 存在
 - [ ] intent.md / requirements.md / units/ 存在，Inception 门禁通过
 - [ ] Golden Thread 完整：Intent → Requirements → Units → Code → Tests → Deployment
