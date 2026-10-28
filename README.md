@@ -145,3 +145,7 @@ C:\Users\qw123\.zcode\cli\memories\projects\1111-ee346761cdb384c0\memory\ruanjia
 - 版本：v4.0
 - 整合领域：13 个（backend / clickhouse / 前端设计与模式 / ui-ux / vercel-react / 编码规范 / 安全审查 / TDD / 架构规划 / NotebookLM / Obsidian / Superpowers / Architecture &Planning）
 - 外部实践并入：cline、agent-md、snodo、ai-sdlc、aiagentflow、AutoMaintainer、awesome-ai-software-engineering、spec-kit、OpenSpec、BMAD-METHOD、planning-with-files、Continuous-Claude-v3、agents.md（GitHub/Gitee）；loopra、agent-skills（Gitee）；Chroma Context Rot 与多篇 arXiv 论文
+
+## License
+
+MIT
